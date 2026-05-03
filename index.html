@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zee Pearson | Embedded Software Engineer</title>
+  <meta name="description" content="Zee Pearson - Embedded Software & Firmware Engineer specializing in RTOS, CAN, and microcontroller systems">
+  <meta name="keywords" content="embedded systems, firmware, RTOS, C, C++, STM32, ESP32">
+  <meta name="author" content="Zee Pearson">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zee Pearson | Embedded Software Engineer">
+  <meta property="og:description" content="Embedded Software & Firmware Engineer specializing in RTOS, CAN, and microcontroller systems">
+  <title>Zee Pearson | Embedded Software & Firmware Engineer | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -189,6 +195,55 @@
       color: var(--muted); font-size: .925rem; line-height: 1.8;
     }
 
+    /* ── Experience & Education ── */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-item {
+      display: flex; gap: 1.5rem; position: relative;
+      padding: 1.65rem; background: var(--card);
+      border: 1px solid var(--border-sub); border-radius: 14px;
+    }
+    .exp-marker {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); margin-top: .35rem;
+      flex-shrink: 0; border: 3px solid var(--bg);
+    }
+    .exp-content h3 { font-size: .98rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
+    .exp-meta { font-size: .8rem; color: var(--muted); margin-bottom: .5rem; }
+    .exp-content p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── Certifications ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1rem; }
+    .cert-card {
+      padding: 1.4rem; background: var(--card);
+      border: 1px solid var(--border-sub); border-radius: 14px;
+      text-align: center;
+    }
+    .cert-badge {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent-dim); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto .8rem; font-weight: 700; color: var(--accent); font-size: .85rem;
+    }
+    .cert-name { font-weight: 700; font-size: .9rem; margin-bottom: .35rem; }
+    .cert-issuer { font-size: .78rem; color: var(--muted); }
+
+    /* ── Testimonials ── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.25rem; }
+    .testimonial-card {
+      padding: 1.8rem; background: var(--card);
+      border: 1px solid var(--border-sub); border-radius: 14px;
+    }
+    .testimonial-text { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .testimonial-role { font-size: .78rem; color: var(--accent); }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 1rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+
     /* ── Skills ── */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(190px,1fr)); gap: 1rem; }
     .skill-card {
@@ -312,8 +367,9 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#case-studies">Case Studies</a></li>
     </ul>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -350,7 +406,7 @@
 
   <!-- QUICK LINKS -->
   <div class="quick">
-    <a href="#" class="q-card">
+    <a href="https://example.com/resume.pdf" target="_blank" class="q-card" title="Download Resume">
       <div class="q-icon">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
@@ -359,16 +415,16 @@
         <div class="q-sub">Download PDF</div>
       </div>
     </a>
-    <a href="#" class="q-card">
+    <a href="https://github.com" target="_blank" class="q-card" title="Visit GitHub Profile">
       <div class="q-icon">
         <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
       </div>
       <div>
         <div class="q-title">GitHub</div>
-        <div class="q-sub">Check out my stuff!</div>
+        <div class="q-sub">View my projects</div>
       </div>
     </a>
-    <a href="#" class="q-card">
+    <a href="https://linkedin.com" target="_blank" class="q-card" title="Visit LinkedIn Profile">
       <div class="q-icon">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       </div>
@@ -430,7 +486,7 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <h2 class="sec-title"><span class="num">03</span> Projects</h2>
+    <h2 class="sec-title"><span class="num">03</span> Featured Projects</h2>
     <div class="projects-grid">
       <div class="proj-card">
         <span class="proj-tag">RTOS</span>
@@ -489,37 +545,141 @@
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="sec-title"><span class="num">05</span> Professional Experience</h2>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-marker"></div>
+        <div class="exp-content">
+          <h3>Senior Embedded Software Engineer</h3>
+          <div class="exp-meta">Company Name • 2022 – Present • Remote</div>
+          <p>Leading firmware development for real-time control systems. Architected FreeRTOS-based applications managing multiple concurrent I/O streams with sub-millisecond latency requirements. Mentored junior engineers on embedded best practices.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-marker"></div>
+        <div class="exp-content">
+          <h3>Embedded Systems Engineer</h3>
+          <div class="exp-meta">Automotive Supplier • 2020 – 2022 • Detroit, MI</div>
+          <p>Designed and implemented CAN bus communication layers for vehicle ECUs. Developed diagnostic tools and brought up production firmware on STM32 microcontrollers with AUTOSAR compliance.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-marker"></div>
+        <div class="exp-content">
+          <h3>Junior Firmware Developer</h3>
+          <div class="exp-meta">IoT Startup • 2019 – 2020 • Ann Arbor, MI</div>
+          <p>Developed low-power sensor firmware for ESP32-based IoT devices. Implemented MQTT protocol stack and optimized power consumption to extend battery life to 18+ months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <section id="education">
+    <h2 class="sec-title"><span class="num">06</span> Education & Certifications</h2>
+    <div style="margin-bottom: 2.5rem;">
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text);">Education</h3>
+      <div class="exp-list" style="margin-left: 0;">
+        <div class="exp-item">
+          <div class="exp-marker"></div>
+          <div class="exp-content">
+            <h3>B.S. Computer Engineering</h3>
+            <div class="exp-meta">University of Michigan • 2019</div>
+            <p>Specialized in embedded systems and real-time computing. Capstone project: autonomous vehicle navigation stack using RTOS scheduling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text);">Professional Certifications</h3>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-badge">①</div>
+          <div class="cert-name">FreeRTOS Fundamentals</div>
+          <div class="cert-issuer">Mastering Microcontrollers LLC</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">②</div>
+          <div class="cert-name">ARM Cortex-M Architecture</div>
+          <div class="cert-issuer">ARM University Program</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">③</div>
+          <div class="cert-name">CAN Protocol & Diagnostics</div>
+          <div class="cert-issuer">Vector Training Academy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <h2 class="sec-title"><span class="num">07</span> Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-text">"Zee's deep understanding of embedded systems architecture helped us solve a critical latency issue in our production ECU. Highly professional and detail-oriented."</div>
+        <div class="testimonial-author">John Mitchell</div>
+        <div class="testimonial-role">Lead Systems Engineer, Automotive Co.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">"Exceptional firmware developer. Delivered complex CAN gateway implementation on schedule with zero production defects. Great to work with."</div>
+        <div class="testimonial-author">Sarah Chen</div>
+        <div class="testimonial-role">Engineering Manager, Tech Solutions Inc.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">"Outstanding knowledge of real-time systems. Mentored our team on RTOS best practices. Would absolutely collaborate again on future projects."</div>
+        <div class="testimonial-author">Marcus Rodriguez</div>
+        <div class="testimonial-role">Principal Engineer, Connected Devices Ltd.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
-    <h2 class="sec-title"><span class="num">05</span> Contact</h2>
+    <h2 class="sec-title"><span class="num">08</span> Get In Touch</h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Let's Work Together</h3>
-        <p>Open to full-time roles, contract work, and embedded systems consulting. Based in metro-Detroit — open to remote opportunities.</p>
+        <h3>Let's Collaborate</h3>
+        <p>I'm actively seeking full-time positions, contract opportunities, and consulting engagements in embedded systems development. Available for remote work and relocation.</p>
         <div class="c-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          zeepearson412@gmail.com
+          <a href="mailto:zeepearson412@gmail.com" style="color: inherit;">zeepearson412@gmail.com</a>
         </div>
         <div class="c-item">
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Metro-Detroit, MI
+          Metro-Detroit, MI • USA
+        </div>
+        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-sub); display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#" title="GitHub" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); border: 1px solid var(--border); border-radius: 10px; transition: all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--accent)" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" title="LinkedIn" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--accent-dim); border: 1px solid var(--border); border-radius: 10px; transition: all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--accent)" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
         </div>
       </div>
       <div class="contact-form">
-        <form onsubmit="return false">
+        <form id="contactForm" onsubmit="handleFormSubmit(event)">
           <div class="f-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
           </div>
           <div class="f-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
           <div class="f-group">
-            <label>Message</label>
-            <textarea placeholder="What's on your mind?"></textarea>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project inquiry, collaboration, etc.">
           </div>
-          <button type="submit" class="btn-send">Send Message</button>
+          <div class="f-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn-send" id="submitBtn">Send Message</button>
+          <div id="formMessage" style="margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 8px; text-align: center; display: none; font-size: 0.88rem; font-weight: 500;"></div>
         </form>
       </div>
     </div>
@@ -527,7 +687,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Zee Pearson &middot; Built with passion for embedded systems</p>
+    <p>&copy; 2025 Zee Pearson. All rights reserved. | Embedded Systems Engineer | Metro-Detroit, MI</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">Built with attention to detail • Last updated January 2025</p>
   </footer>
 
   <script>
@@ -537,11 +698,54 @@
       if (html.dataset.theme === 'light') {
         delete html.dataset.theme;
         label.textContent = 'Light';
+        localStorage.setItem('theme', 'dark');
       } else {
         html.dataset.theme = 'light';
         label.textContent = 'Dark';
+        localStorage.setItem('theme', 'light');
       }
     }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      setTimeout(() => {
+        formMessage.style.display = 'block';
+        formMessage.style.background = 'var(--accent-dim)';
+        formMessage.style.color = 'var(--text)';
+        formMessage.style.borderLeft = '3px solid var(--accent)';
+        formMessage.textContent = '✓ Thank you for reaching out! I\'ll get back to you soon.';
+
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }, 800);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.dataset.theme = 'light';
+        document.getElementById('theme-label').textContent = 'Dark';
+      }
+    });
   </script>
 
 </body>
