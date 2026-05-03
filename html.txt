@@ -1,0 +1,22 @@
+export default function Home() {
+  return (
+    <main style={{ padding: "20px" }}>
+      <h1>Zee's Portfolio</h1>
+      <p>Embedded Software Engineering Student</p>
+
+      <section>
+        <h2>Projects</h2>
+
+        <div>
+          <h3>Temperature Sensor System</h3>
+          <p>ADC + UART + LED control on Tiva C</p>
+        </div>
+
+        <div>
+          <h3>Smart Home System</h3>
+          <p>Embedded system using C and sensors</p>
+        </div>
+      </section>
+    </main>
+  );
+}
