@@ -567,6 +567,61 @@
     .reveal-delay-3 { transition-delay: 0.32s; }
     .reveal-delay-4 { transition-delay: 0.44s; }
 
+    /* ROBOTICS CARD EXPAND */
+    .project-card.robotics-card {
+      grid-column: 1 / -1;
+    }
+    .project-card.robotics-card .project-expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    .project-card.robotics-card:hover .project-expand {
+      max-height: 900px;
+      opacity: 1;
+    }
+    .robotics-teams {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin-top: 28px;
+    }
+    .team-heading {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--fg);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .team-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: #4a9eff;
+      margin-bottom: 20px;
+    }
+    .team-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      object-position: top left;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .team-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--fg3);
+      margin-top: 10px;
+    }
+    @media (max-width: 640px) {
+      .robotics-teams { grid-template-columns: 1fr; gap: 32px; }
+    }
+
     /* CERT CARDS */
     .cert-card {
       background: var(--bg2);
@@ -581,6 +636,12 @@
       transform: translateY(-3px);
       border-color: rgba(74,158,255,0.4);
     }
+    .cert-card .cert-name,
+    .cert-card .cert-date {
+      transition: color 0.2s;
+    }
+    .cert-card:hover .cert-name,
+    .cert-card:hover .cert-date { color: #4a9eff !important; }
     .cert-pdf-hint {
       font-family: var(--mono);
       font-size: 10px;
@@ -679,6 +740,59 @@
       .footer-name { font-size: 26px; }
       footer { padding: 48px 16px; }
     }
+
+    /* RESPONSIVE — cert cards full width on small screens */
+    @media (max-width: 480px) {
+      .cert-card { flex: 1 1 100%; }
+    }
+
+    /* RESPONSIVE — YouTube thumbnail scales on mobile */
+    @media (max-width: 640px) {
+      .project-visual a { width: 100%; display: block; }
+      .project-visual a img { width: 100% !important; height: auto !important; }
+    }
+
+    /* TOUCH DEVICES — surface all hover-gated content
+       @media (hover: none) is the standard for touch/stylus detection */
+    @media (hover: none) {
+      /* Show project expand content without hover */
+      .project-card.featured .project-expand,
+      .project-card.robotics-card .project-expand {
+        max-height: 2000px !important;
+        opacity: 1 !important;
+        transition: none !important;
+      }
+      /* Remove inner scroll cap so content doesn't get clipped */
+      .project-expand-inner {
+        max-height: none;
+        overflow: visible;
+      }
+      /* Always show cert PDF hint */
+      .cert-pdf-hint { opacity: 1; }
+      /* Disable hover lift flashes on tap */
+      .project-card:hover,
+      .skill-group:hover,
+      .cert-card:hover,
+      .btn-primary:hover,
+      .btn-secondary:hover { transform: none !important; }
+      /* Disable the blue bottom bar swipe on tap */
+      .project-card:hover::after { transform: scaleX(0) !important; }
+    }
+
+    /* ACCESSIBILITY — focus-visible styles for keyboard navigation */
+    .cert-card:focus-visible {
+      outline: 2px solid #4a9eff;
+      outline-offset: 2px;
+      border-color: rgba(74,158,255,0.4);
+      transform: translateY(-3px);
+    }
+    .cert-card:focus-visible .cert-name,
+    .cert-card:focus-visible .cert-date { color: #4a9eff !important; }
+    .cert-card:focus-visible .cert-pdf-hint { opacity: 1; }
+    .btn-primary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .btn-secondary:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .social-link:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .nav-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -846,11 +960,11 @@
       </div>
 
       <!-- Robotics -->
-      <div class="project-card reveal reveal-delay-1">
+      <div class="project-card robotics-card reveal reveal-delay-1">
         <div class="project-num">02</div>
         <h3 class="project-title">Autonomous Robotics — Da Bears 247 & The Crew 7769</h3>
         <p class="project-desc">
-          Programmed autonomous robots using Java and FRC libraries. Worked with PWM ports for motor, servo, and actuator control. 
+          Programmed autonomous robots using Java and FRC libraries. Worked with PWM ports for motor, servo, and actuator control.
           Built a computer-vision-guided pickup system using OpenCV to detect and deliver game pieces autonomously.
         </p>
         <div class="project-tags">
@@ -859,6 +973,22 @@
           <span class="project-tag">OpenCV</span>
           <span class="project-tag">PWM</span>
           <span class="project-tag">Pathfinder</span>
+        </div>
+        <div class="project-expand">
+          <div class="robotics-teams">
+            <div class="robotics-team">
+              <div class="team-heading">Da Bears 247</div>
+              <div class="team-date">Joined Sep 2019 – May 2023</div>
+              <img class="team-img" src="img/Recommendation_Letter.png" alt="Da Bears 247 Recommendation Letter" />
+              <div class="team-caption">Recommendation Letter from Dave — Robotics Mentor</div>
+            </div>
+            <div class="robotics-team">
+              <div class="team-heading">The Crew 7769</div>
+              <div class="team-date">Joined Jan 2024 – Apr 2024</div>
+              <img class="team-img" src="img/image_of_robot.png" alt="The Crew 7769 Robot" />
+              <div class="team-caption">Picture of The Crew 7769 Robot</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -896,19 +1026,19 @@
     <div style="margin-top:64px;" class="reveal">
       <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">Certifications</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="certs/javascript-cert.pdf" target="_blank" rel="noopener" class="cert-card">
-          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">JavaScript</div>
-          <div style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Jan 2023</div>
+        <a href="certs/JavaScript.pdf" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-name" style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">JavaScript</div>
+          <div class="cert-date" style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Jan 2023</div>
           <div class="cert-pdf-hint">View PDF ↗</div>
         </a>
-        <a href="certs/java-cert.pdf" target="_blank" rel="noopener" class="cert-card">
-          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">Java</div>
-          <div style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Apr 2023</div>
+        <a href="certs/Java.pdf" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-name" style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">Java</div>
+          <div class="cert-date" style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Apr 2023</div>
           <div class="cert-pdf-hint">View PDF ↗</div>
         </a>
-        <a href="certs/htmlcss-cert.pdf" target="_blank" rel="noopener" class="cert-card">
-          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">HTML/CSS</div>
-          <div style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Mar 2023</div>
+        <a href="certs/HTML and CSS.pdf" target="_blank" rel="noopener" class="cert-card">
+          <div class="cert-name" style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--fg2);">HTML/CSS</div>
+          <div class="cert-date" style="font-size:12px;color:var(--fg3);margin-top:4px;">Certiport / Mar 2023</div>
           <div class="cert-pdf-hint">View PDF ↗</div>
         </a>
       </div>
