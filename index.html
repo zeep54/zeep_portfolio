@@ -51,9 +51,9 @@
       transition: background 0.4s, border-bottom 0.4s;
     }
     nav.scrolled {
-      background: rgba(247,246,243,0.92);
+      background: rgba(17,16,16,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
+      border-bottom: 1px solid rgba(91,200,255,0.1);
     }
     .nav-logo {
       font-family: var(--mono);
@@ -204,8 +204,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border: 1.5px solid rgba(91,200,255,0.3);
       color: rgba(91,200,255,0.7);
       text-decoration: none;
@@ -242,7 +242,7 @@
       padding: 13px 32px;
       background: transparent;
       color: rgba(255,255,255,0.85);
-      border: 1.5px solid rgba(91,200,255,0.5);
+      font-family: var(--mono);
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -492,7 +492,7 @@
     /* FOOTER */
     footer {
       background: var(--fg);
-      color: #e8e6e0;
+      color: #111010;
       padding: 64px 48px;
     }
     .footer-inner {
@@ -530,7 +530,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-links a:hover { color: #e8e6e0; }
+    .footer-links a:hover { color: #111010; }
 
     .project-card.featured .project-expand {
       max-height: 0;
@@ -826,6 +826,8 @@
     }
 
     /* ACCESSIBILITY — focus-visible styles for keyboard navigation */
+    .nav-logo:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .nav-hamburger:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
     .cert-card:focus-visible {
       outline: 2px solid #4a9eff;
       outline-offset: 2px;

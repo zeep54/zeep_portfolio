@@ -129,6 +129,7 @@
       position: relative;
       z-index: 1;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -220,6 +221,15 @@
       transition: border-color 0.25s, background 0.25s;
       -webkit-appearance: none;
     }
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible {
+      outline: 2px solid rgba(91,200,255,0.7);
+      outline-offset: 2px;
+    }
+    .btn-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .nav-logo:focus-visible,
+    .nav-hamburger:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .nav-links a:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
     .form-group input::placeholder,
     .form-group textarea::placeholder {
       color: rgba(160,152,144,0.45);
@@ -358,6 +368,11 @@
 
     @keyframes fadeUp {
       to { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 28px 20px; }
     }
 
     @media (max-width: 640px) {
