@@ -63,7 +63,10 @@
       color: var(--accent);
       text-transform: uppercase;
       text-decoration: none;
+      transition: color 0.2s, transform 0.15s;
+      display: inline-block;
     }
+    .nav-logo:hover { color: #5bc8ff; transform: translateY(-1px); }
     .nav-links {
       display: flex;
       gap: 36px;
@@ -653,6 +656,45 @@
     }
     .cert-card:hover .cert-pdf-hint { opacity: 1; }
 
+    /* SCROLL TO TOP */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      background: rgba(17,16,16,0.75);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(91,200,255,0.4);
+      color: #5bc8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s, border-color 0.2s, background 0.2s;
+      z-index: 200;
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .scroll-top:hover {
+      background: rgba(91,200,255,0.12);
+      border-color: #5bc8ff;
+      transform: translateY(-3px);
+    }
+    .scroll-top svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     /* KEYFRAMES */
     @keyframes fadeUp {
       to { opacity: 1; transform: none; }
@@ -730,6 +772,10 @@
       .btn-primary, .btn-secondary { padding: 12px 24px; }
     }
 
+    @media (max-width: 640px) {
+      .scroll-top { bottom: 20px; right: 20px; }
+    }
+
     /* RESPONSIVE — small phones */
     @media (max-width: 420px) {
       .hero { padding: calc(var(--nav-h) + 24px) 16px 40px; }
@@ -799,11 +845,12 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a class="nav-logo" href="#">ZP</a>
+    <a class="nav-logo" href="index.html">ZP</a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
       <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
@@ -1045,6 +1092,13 @@
     </div>
   </section>
 
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -1070,6 +1124,15 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 200);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Hamburger menu
