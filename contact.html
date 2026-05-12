@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Zee Pearson</title>
+  <title>Contact — Zee Pearson | Embedded Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -37,7 +37,7 @@
       min-height: 100vh;
     }
 
-    /* CIRCUIT BACKGROUND — fixed behind everything */
+    /* BACKGROUND */
     .page-bg {
       position: fixed;
       inset: 0;
@@ -53,12 +53,7 @@
     .page-bg-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(3,8,20,0.92) 0%,
-        rgba(3,8,20,0.80) 50%,
-        rgba(3,8,20,0.88) 100%
-      );
+      background: linear-gradient(135deg, rgba(3,8,20,0.94) 0%, rgba(3,8,20,0.85) 50%, rgba(3,8,20,0.92) 100%);
     }
 
     /* NAV */
@@ -124,130 +119,212 @@
       stroke-linecap: round;
     }
 
-    /* PAGE CONTENT */
+    /* PAGE LAYOUT */
     .page-content {
       position: relative;
       z-index: 1;
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: calc(var(--nav-h) + 48px) 24px 80px;
+      padding: calc(var(--nav-h) + 60px) 48px 80px;
     }
 
-    /* HEADER */
-    .contact-header {
-      text-align: center;
-      margin-bottom: 52px;
+    /* TWO-COLUMN GRID */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1020px;
+      width: 100%;
+      align-items: start;
+    }
+
+    /* LEFT — INFO PANEL */
+    .contact-info {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(20px);
       animation: fadeUp 0.8s 0.2s forwards;
     }
-    .contact-label {
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #5bc8ff;
-      margin-bottom: 14px;
+      color: #4ade80;
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.25);
+      padding: 6px 14px;
+      margin-bottom: 32px;
     }
+    .avail-dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+    }
+
     .contact-title {
       font-family: var(--serif);
-      font-size: clamp(40px, 5vw, 68px);
+      font-size: clamp(36px, 4vw, 58px);
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: #ffffff;
-      text-shadow: 0 4px 32px rgba(0,0,0,0.9), 0 0 60px rgba(91,200,255,0.1);
+      text-shadow: 0 4px 32px rgba(0,0,0,0.9);
+      margin-bottom: 20px;
     }
-    .contact-title em {
-      font-style: italic;
-      color: #f0a030;
-    }
-    .contact-subtitle {
-      margin-top: 16px;
+    .contact-title em { font-style: italic; color: #f0a030; }
+
+    .contact-pitch {
       font-size: 15px;
+      line-height: 1.75;
       color: rgba(210,230,255,0.65);
       font-weight: 300;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 400px;
+      margin-bottom: 40px;
     }
 
-    /* FORM CARD */
+    /* DETAIL ROWS */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+      border-top: 1px solid rgba(91,200,255,0.1);
+    }
+    .detail-item {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(91,200,255,0.08);
+    }
+    .detail-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4a9eff;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .detail-value {
+      font-size: 13px;
+      color: rgba(210,230,255,0.8);
+      font-weight: 300;
+    }
+
+    /* DIRECT CONTACT LINKS */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(210,230,255,0.6);
+      text-decoration: none;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(91,200,255,0.08);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .contact-link:first-child { border-top: 1px solid rgba(91,200,255,0.08); }
+    .contact-link:hover { color: #5bc8ff; transform: translateX(6px); }
+    .contact-link svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    .contact-link:hover svg { opacity: 1; }
+
+    /* RIGHT — FORM CARD */
     .form-card {
-      width: 100%;
-      max-width: 560px;
-      background: rgba(5,12,24,0.45);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(91,200,255,0.18);
-      padding: 48px 44px;
+      background: rgba(5,12,24,0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(91,200,255,0.15);
+      padding: 44px 40px;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s 0.4s forwards;
     }
 
+    .form-card-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4a9eff;
+      margin-bottom: 28px;
+    }
+
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 18px; }
     .form-group label {
       display: block;
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
+      font-size: 9px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(91,200,255,0.8);
-      margin-bottom: 8px;
+      color: rgba(91,200,255,0.7);
+      margin-bottom: 7px;
     }
     .form-group input,
     .form-group textarea {
       width: 100%;
-      background: transparent;
-      border: 1px solid rgba(91,200,255,0.25);
+      background: rgba(5,12,24,0.4);
+      border: 1px solid rgba(91,200,255,0.2);
       color: rgba(240,236,230,0.95);
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 300;
-      padding: 12px 16px;
+      padding: 11px 14px;
       outline: none;
       transition: border-color 0.25s, background 0.25s;
       -webkit-appearance: none;
     }
-    .form-group input:focus-visible,
-    .form-group textarea:focus-visible {
-      outline: 2px solid rgba(91,200,255,0.7);
-      outline-offset: 2px;
-    }
-    .btn-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-    .nav-logo:focus-visible,
-    .nav-hamburger:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
-    .nav-links a:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(160,152,144,0.45);
-      font-style: italic;
-    }
     .form-group input:focus,
     .form-group textarea:focus {
-      border-color: rgba(91,200,255,0.65);
+      border-color: rgba(91,200,255,0.6);
       background: rgba(91,200,255,0.04);
+    }
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible {
+      outline: 2px solid rgba(91,200,255,0.6);
+      outline-offset: 2px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(160,152,144,0.4);
+      font-style: italic;
     }
     .form-group textarea {
       resize: none;
-      height: 130px;
+      height: 128px;
       overflow-y: auto;
     }
-    /* autofill style override */
     .form-group input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px rgba(5,12,24,0.6) inset;
+      -webkit-box-shadow: 0 0 0 1000px rgba(5,12,24,0.7) inset;
       -webkit-text-fill-color: rgba(240,236,230,0.95);
       transition: background-color 5000s ease-in-out 0s;
     }
@@ -264,69 +341,33 @@
       border: none;
       cursor: pointer;
       transition: opacity 0.2s, transform 0.15s;
-      margin-top: 4px;
+      margin-top: 6px;
     }
     .btn-submit:hover { opacity: 0.85; transform: translateY(-1px); }
     .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
-    /* STATUS MESSAGES */
     .form-status {
       display: none;
       text-align: center;
-      padding: 14px;
-      margin-top: 16px;
+      padding: 12px;
+      margin-top: 14px;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.06em;
     }
     .form-status.error {
       display: block;
       color: #ff8080;
-      border: 1px solid rgba(255,128,128,0.3);
-      background: rgba(255,128,128,0.06);
+      border: 1px solid rgba(255,128,128,0.25);
+      background: rgba(255,128,128,0.05);
     }
 
-    /* SUCCESS STATE */
-    .success-state {
-      display: none;
-      text-align: center;
-      padding: 16px 0;
-    }
-    .success-state.visible { display: block; }
-    .success-icon {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-    .success-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-    .success-sub {
-      font-size: 14px;
-      color: rgba(210,230,255,0.65);
-      font-weight: 300;
-      margin-bottom: 32px;
-    }
-    .btn-another {
-      display: inline-block;
-      padding: 12px 28px;
-      background: transparent;
-      color: #5bc8ff;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid rgba(91,200,255,0.5);
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    }
-    .btn-another:hover {
-      background: rgba(91,200,255,0.08);
-      border-color: #5bc8ff;
-      transform: translateY(-1px);
-    }
+    /* FOCUS STYLES */
+    .nav-logo:focus-visible,
+    .nav-hamburger:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .nav-links a:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; }
+    .contact-link:focus-visible { outline: 2px solid #5bc8ff; outline-offset: 3px; color: #5bc8ff; }
 
     /* SCROLL TO TOP */
     .scroll-top {
@@ -348,24 +389,9 @@
       transition: opacity 0.3s, transform 0.2s, border-color 0.2s, background 0.2s;
       z-index: 200;
     }
-    .scroll-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .scroll-top:hover {
-      background: rgba(91,200,255,0.12);
-      border-color: #5bc8ff;
-      transform: translateY(-3px);
-    }
-    .scroll-top svg {
-      width: 18px;
-      height: 18px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { background: rgba(91,200,255,0.12); border-color: #5bc8ff; transform: translateY(-3px); }
+    .scroll-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* FOOTER */
     footer {
@@ -407,11 +433,17 @@
       to { opacity: 1; transform: none; }
     }
 
-    @media (max-width: 480px) {
-      .form-row { grid-template-columns: 1fr; }
-      .form-card { padding: 28px 20px; }
+    /* RESPONSIVE — tablet */
+    @media (max-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        max-width: 560px;
+      }
+      .page-content { padding: calc(var(--nav-h) + 48px) 32px 80px; }
     }
 
+    /* RESPONSIVE — mobile */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
       .nav-hamburger { display: block; }
@@ -430,16 +462,18 @@
       }
       .nav-links.open { display: flex; }
       .nav-links li a { display: block; padding: 14px 24px; font-size: 13px; }
-      .form-card { padding: 32px 24px; }
+      .page-content { padding: calc(var(--nav-h) + 32px) 20px 64px; }
+      .form-card { padding: 28px 20px; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-links { gap: 16px; }
       .scroll-top { bottom: 20px; right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- CIRCUIT BACKGROUND -->
+  <!-- BACKGROUND -->
   <div class="page-bg">
     <img src="img/circuit-bg.png" alt="" />
     <div class="page-bg-overlay"></div>
@@ -463,47 +497,94 @@
     </button>
   </nav>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <div class="page-content">
-    <div class="contact-header">
-      <div class="contact-label">Get In Touch</div>
-      <h1 class="contact-title">Let's <em>Connect</em></h1>
-      <p class="contact-subtitle">Have a question or opportunity? Send a message and I'll get back to you.</p>
-    </div>
+    <div class="contact-grid">
 
-    <div class="form-card">
-      <form id="contact-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+      <!-- LEFT: Value proposition for the employer -->
+      <div class="contact-info">
+        <div class="availability-badge">
+          <span class="avail-dot"></span>
+          Available for Opportunities
+        </div>
+
+        <h1 class="contact-title">Let's Work<br /><em>Together.</em></h1>
+
+        <p class="contact-pitch">
+          I'm a junior embedded software engineer at Lawrence Technological University actively seeking internships and entry-level roles in firmware, real-time systems, or embedded software development. I'm ready to contribute from day one.
+        </p>
+
+        <div class="contact-details">
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Southfield, MI &mdash; open to remote</span>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          <div class="detail-item">
+            <span class="detail-label">Seeking</span>
+            <span class="detail-value">Internships &amp; entry-level roles</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Responds</span>
+            <span class="detail-value">Within 24 hours</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">GPA</span>
+            <span class="detail-value">3.7 — Lawrence Tech &nbsp;|&nbsp; 3.8 — OCC (Magna Cum Laude)</span>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+        <div class="contact-links">
+          <a href="mailto:zpearson@ltu.edu" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            zpearson@ltu.edu
+          </a>
+          <a href="https://www.linkedin.com/in/zee-p-8a0a72259/" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            linkedin.com/in/zee-p-8a0a72259
+          </a>
+          <a href="https://github.com/zeepearson" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            github.com/zeepearson
+          </a>
         </div>
-
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit" id="submit-btn">Send Message</button>
-        <div class="form-status" id="form-status"></div>
-      </form>
-
-      <div class="success-state" id="success-state">
-        <div class="success-icon">&#10003;</div>
-        <div class="success-title">Almost there!</div>
-        <p class="success-sub">Your email app opened with the message pre-filled — just hit Send and I'll get back to you.</p>
-        <button class="btn-another" id="btn-another">Send Another Message</button>
       </div>
+
+      <!-- RIGHT: Contact form -->
+      <div class="form-card">
+        <div class="form-card-label">Send a Message</div>
+
+        <form id="contact-form" action="https://formsubmit.co/zpearson@ltu.edu" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" id="form-next" value="" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="e.g. Internship Opportunity at Acme Corp" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about the role or opportunity..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">Send Message</button>
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -540,6 +621,12 @@
       const open = navLinks.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', open);
     });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     // Scroll to top button
     const scrollTopBtn = document.getElementById('scroll-top');
@@ -550,46 +637,33 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Contact form — opens pre-filled email via mailto:
+    // Set the thank-you redirect URL based on current host
+    document.getElementById('form-next').value =
+      new URL('thankyou.html', window.location.href).href;
+
+    // Client-side validation
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
     const statusEl = document.getElementById('form-status');
-    const successState = document.getElementById('success-state');
-    const btnAnother = document.getElementById('btn-another');
 
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
       const nameVal    = form.elements['name'].value.trim();
       const emailVal   = form.elements['email'].value.trim();
-      const subjectVal = form.elements['subject'].value.trim();
       const messageVal = form.elements['message'].value.trim();
 
       if (!nameVal || !emailVal || !messageVal) {
+        e.preventDefault();
         statusEl.className = 'form-status error';
         statusEl.textContent = 'Please fill in your name, email, and message.';
         return;
       }
 
-      const body = `From: ${nameVal}\nEmail: ${emailVal}\n\n${messageVal}`;
-      const mailtoURL = `mailto:zpearson@ltu.edu?subject=${encodeURIComponent(subjectVal || 'Portfolio Contact')}&body=${encodeURIComponent(body)}`;
-
-      window.location.href = mailtoURL;
-
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
       setTimeout(() => {
-        form.style.display = 'none';
-        successState.classList.add('visible');
-        form.reset();
-      }, 300);
-    });
-
-    btnAnother.addEventListener('click', () => {
-      successState.classList.remove('visible');
-      form.style.display = '';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-      statusEl.className = 'form-status';
-      form.querySelector('#name').focus();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }, 30000);
     });
   </script>
 
