@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.zigbee2mqtt.io)",
+      "WebFetch(domain:github.com)",
+      "PowerShell(Remove-Item -Recurse -Force \"c:\\\\Users\\\\zpearson\\\\OneDrive\\\\Documents\\\\PlatformIO\\\\Projects\\\\XIAO\" -Confirm:$false)",
+      "PowerShell(Remove-Item -Recurse -Force \"c:\\\\Users\\\\zpearson\\\\OneDrive\\\\Documents\\\\PlatformIO\\\\Projects\\\\XIAO_Moisture_Sensor\" -Confirm:$false)"
+    ]
+  }
+}

@@ -451,6 +451,51 @@
       opacity: 0.15;
     }
 
+    /* JOBS strip */
+    .jobs-section {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding-top: 80px;
+      margin-top: 0;
+    }
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .job-card { }
+    .job-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .job-company {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: #4a9eff;
+      margin-bottom: 12px;
+    }
+    .job-detail {
+      font-size: 14px;
+      color: var(--fg2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .job-detail ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+    .job-detail li {
+      margin-bottom: 6px;
+    }
+    .job-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--fg3);
+      margin-top: 10px;
+    }
+
     /* EDUCATION strip */
     .edu-section {
       border-top: 1px solid rgba(0,0,0,0.1);
@@ -739,6 +784,7 @@
       .projects-grid { grid-template-columns: 1fr; }
       .project-card.featured { grid-template-columns: 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
+      .jobs-grid { grid-template-columns: 1fr; }
       section { padding: 80px 24px; }
       .footer-inner { flex-direction: column; gap: 32px; align-items: flex-start; }
       .footer-name { font-size: 32px; }
@@ -851,6 +897,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#jobs">Jobs</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -1039,10 +1086,34 @@
     </div>
   </section>
 
+  <!-- JOBS -->
+  <section id="jobs" class="jobs-section">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Jobs</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="jobs-grid">
+      <div class="job-card reveal reveal-delay-1">
+        <div class="job-company">Blue Devil Adventure · Embedded Software Intern</div>
+        <div class="job-title">Sensor-to-Storage Embedded Data Pipeline</div>
+        <div class="job-detail">
+          <ul>
+            <li>Programmed an ESP32-C6 microcontroller to interface with Third Reality moisture sensors, handling sensor polling and data acquisition.</li>
+            <li>Designed and implemented a UART communication link to relay sensor data from the ESP32-C6 to a Raspberry Pi Pico 2 W.</li>
+            <li>Developed embedded firmware on the Pico 2 W to log incoming sensor data to a microSD card, applying embedded storage and filesystem-handling techniques for reliable, persistent data capture.</li>
+            <li>Built and debugged a multi-stage embedded pipeline (sensor → ESP32-C6 → UART → Pico 2 W → microSD) for field-ready environmental data collection.</li>
+          </ul>
+        </div>
+        <div class="job-date">May 2026 — August 2026</div>
+      </div>
+    </div>
+  </section>
+
   <!-- EDUCATION -->
   <section id="education" class="edu-section">
     <div class="section-header reveal">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 class="section-title">Education</h2>
       <div class="section-line"></div>
     </div>
