@@ -15,8 +15,8 @@
       --bg: #111010;
       --bg2: #1a1918;
       --fg: #f0ece6;
-      --fg2: #a09890;
-      --fg3: #555;
+      --fg2: #cac4bc;
+      --fg3: #c2beb8;
       --accent: oklch(42% 0.13 240);
       --accent2: oklch(42% 0.13 170);
       --mono: 'IBM Plex Mono', monospace;
@@ -463,6 +463,27 @@
       gap: 48px;
     }
     .job-card { }
+    .job-body {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .job-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      object-position: top left;
+      display: block;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    .job-img-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--fg3);
+      margin-top: 10px;
+    }
     .job-title {
       font-family: var(--serif);
       font-size: 22px;
@@ -785,6 +806,7 @@
       .project-card.featured { grid-template-columns: 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
       .jobs-grid { grid-template-columns: 1fr; }
+      .job-body { grid-template-columns: 1fr; }
       section { padding: 80px 24px; }
       .footer-inner { flex-direction: column; gap: 32px; align-items: flex-start; }
       .footer-name { font-size: 32px; }
@@ -1097,15 +1119,25 @@
       <div class="job-card reveal reveal-delay-1">
         <div class="job-company">Blue Devil Adventure · Embedded Software Intern</div>
         <div class="job-title">Sensor-to-Storage Embedded Data Pipeline</div>
-        <div class="job-detail">
-          <ul>
-            <li>Programmed an ESP32-C6 microcontroller to interface with Third Reality moisture sensors, handling sensor polling and data acquisition.</li>
-            <li>Designed and implemented a UART communication link to relay sensor data from the ESP32-C6 to a Raspberry Pi Pico 2 W.</li>
-            <li>Developed embedded firmware on the Pico 2 W to log incoming sensor data to a microSD card, applying embedded storage and filesystem-handling techniques for reliable, persistent data capture.</li>
-            <li>Built and debugged a multi-stage embedded pipeline (sensor → ESP32-C6 → UART → Pico 2 W → microSD) for field-ready environmental data collection.</li>
-          </ul>
+        <div class="job-body">
+          <div class="job-text">
+            <div class="job-detail">
+              <ul>
+                <li>Programmed an ESP32-C6 microcontroller to interface with Third Reality moisture sensors, handling sensor polling and data acquisition.</li>
+                <li>Designed and implemented a UART communication link to relay sensor data from the ESP32-C6 to a Raspberry Pi Pico 2 W.</li>
+                <li>Developed embedded firmware on the Pico 2 W to log incoming sensor data to a microSD card, applying embedded storage and filesystem-handling techniques for reliable, persistent data capture.</li>
+                <li>Built and debugged a multi-stage embedded pipeline (sensor → ESP32-C6 → UART → Pico 2 W → microSD) for field-ready environmental data collection.</li>
+                <li>Built a web dashboard that connects directly to the Pico 2 W over the network, exposing REST API endpoints to pull live Zigbee moisture readings and historical data logged to the microSD card.</li>
+                <li>Extended the pipeline with remote control: the dashboard lets users trigger pumps and open/close valves, turning the project into a full greenhouse automation system for monitoring and irrigating plants.</li>
+              </ul>
+            </div>
+            <div class="job-date">May 2026 — August 2026</div>
+          </div>
+          <div class="job-media">
+            <img class="job-img" src="img/image_of_PCB.PNG" alt="CropMind PCB board" />
+            <div class="job-img-caption">CropMind PCB board</div>
+          </div>
         </div>
-        <div class="job-date">May 2026 — August 2026</div>
       </div>
     </div>
   </section>
